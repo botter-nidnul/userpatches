@@ -1,0 +1,11 @@
+[Unit]
+Description=Watch for Urbit keyfile
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/watch_for_keyfile.sh
+Restart=no
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target
