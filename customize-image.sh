@@ -24,7 +24,8 @@ Main() {
 			;;
 		buster)
 			# buster is all that i've tested, but I think the other distros should work with the Urbit packages too
-			InstallUrbitService
+			InstallUrbitTurnkey
+			InstallUrbitFstrim
 			InstallNymeaNetworkManager
 			InstallRPiMonitor
 			;;
@@ -40,7 +41,7 @@ Main() {
 	esac
 } # Main
 
-InstallUrbitService() {
+InstallUrbitTurnkey() {
 
 	# set root password, avoid being prompted on boot to set it
 	echo root:turnkeyurbit | chpasswd
@@ -58,20 +59,15 @@ InstallUrbitService() {
 
 	# update then install urbit packages
 	apt-get update
-	apt-get --yes install usbmount
-	apt-get --yes install urbit-service
+	apt-get --yes install urbit-turnkey
 
-	# make fstrim run more often
-	cp /tmp/overlay/fstrim.timer /lib/systemd/system/fstrim.timer
+} # InstallUrbitTurnkey
 
-	# tmp urbit-scripts
-	cp /tmp/overlay/watch_for_keyfile.sh /usr/bin/watch_for_keyfile.sh
-	cp /tmp/overlay/boot_urbit_with_keyfile.sh /usr/bin/boot_urbit_with_keyfile.sh
-	cp /tmp/overlay/watch_for_keyfile.service /lib/systemd/system/watch_for_keyfile.service
-	systemctl daemon-reload
-	systemctl enable watch_for_keyfile
+InstallUrbitFstrim() {
 
-} # InstallUrbitService
+	apt-get --yes install fstrim-urbit
+	
+} # InstallUrbitFstrim
 
 InstallNymeaNetworkManager() {
 
