@@ -114,16 +114,10 @@ web.addons.2.name=Shellinabox
 web.addons.2.addons=shellinabox
 web.addons.3.name=Top3
 web.addons.3.addons=top3
-include=/etc/rpimonitor/template/version.conf
-include=/etc/rpimonitor/template/uptime.conf
-include=/etc/rpimonitor/template/cpu.conf
-include=/etc/rpimonitor/template/temperature.conf
-include=/etc/rpimonitor/template/memory.conf
-include=/etc/rpimonitor/template/swap.conf
-include=/etc/rpimonitor/template/network.conf
 include=/etc/rpimonitor/template/storage.conf
 include=/etc/rpimonitor/template/services.conf
 include=/etc/rpimonitor/template/wlan.conf
+include=/etc/rpimonitor/template/entropy.conf
 ADDLINES
 
 } # InstallRPiMonitor
