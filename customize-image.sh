@@ -26,6 +26,7 @@ Main() {
 			# buster is all that i've tested, but I think the other distros should work with the Urbit packages too
 			InstallUrbitTurnkey
 			InstallUrbitFstrim
+			InstallAvahi
 			InstallNymeaNetworkManager
 			InstallRPiMonitor
 			;;
@@ -68,6 +69,13 @@ InstallUrbitFstrim() {
 	apt-get --yes install fstrim-urbit
 	
 } # InstallUrbitFstrim
+
+InstallAvahi() {
+
+	HOSTNAME="urbit"
+	apt-get --yes install avahi-daemon libnss-mdns
+	
+} # InstallAvahi
 
 InstallNymeaNetworkManager() {
 
