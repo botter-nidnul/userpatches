@@ -72,7 +72,7 @@ InstallUrbitFstrim() {
 
 InstallAvahi() {
 
-	HOSTNAME="urbit"
+	echo urbit > /etc/hostname
 	apt-get --yes install avahi-daemon libnss-mdns
 	
 } # InstallAvahi
