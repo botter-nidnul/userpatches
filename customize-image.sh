@@ -27,6 +27,7 @@ Main() {
 			InstallUrbitTurnkey
 			InstallUrbitFstrim
 			InstallAvahi
+			SetupUnattendedUpgrades
 			InstallNymeaNetworkManager
 			InstallRPiMonitor
 			;;
@@ -76,6 +77,13 @@ InstallAvahi() {
 	apt-get --yes install avahi-daemon libnss-mdns
 	
 } # InstallAvahi
+
+SetupUnattendedUpgrades() {
+
+	apt-get --yes install unattended-upgrades needrestart
+	mv /tmp/overlay/02-armbian-periodic /etc/apt/apt.conf.d/02-armbian-periodic
+	
+} # SetupUnattendedUpgrades
 
 InstallNymeaNetworkManager() {
 
