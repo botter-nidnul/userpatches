@@ -80,8 +80,8 @@ InstallAvahi() {
 
 SetupUnattendedUpgrades() {
 
-	apt-get --yes install unattended-upgrades needrestart
-	mv /tmp/overlay/02-armbian-periodic /etc/apt/apt.conf.d/02-armbian-periodic
+	apt-get --yes install unattended-upgrades
+	cp /tmp/overlay/02-armbian-periodic /etc/apt/apt.conf.d/02-armbian-periodic
 	
 } # SetupUnattendedUpgrades
 
