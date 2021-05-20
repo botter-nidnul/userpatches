@@ -1,0 +1,22 @@
+#!/bin/sh -e
+#
+# rc.local
+#
+# This script is executed at the end of each multiuser runlevel.
+# Make sure that the script will "exit 0" on success or any other
+# value on error.
+#
+# In order to enable or disable this script just change the execution
+# bits.
+#
+# By default this script does nothing.
+
+# sleep for 5 minutes after boot, then check if there's a ssh login and shutdown the ssh service if there isn't
+
+sleep 5m
+who | grep pts >/dev/null || service sshd stop
+
+# also shutdown nymea-networkmanager after 5 minutes
+service nymea-networkmanager stop
+
+exit 0

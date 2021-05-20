@@ -30,6 +30,7 @@ Main() {
 			SetupUnattendedUpgrades
 			InstallNymeaNetworkManager
 			InstallRPiMonitor
+			TimeoutInsecureServices
 			;;
 		bullseye)
 			# your code here
@@ -137,5 +138,13 @@ include=/etc/rpimonitor/template/entropy.conf
 ADDLINES
 
 } # InstallRPiMonitor
+
+TimeoutInsecureServices() {
+
+	# disable sshd 5 minutes after boot if no ssh login, to reduce the danger of a default root password
+	# also disable nymea-networkmanager after 5 minutes, so device can't be hijacked to run on an unexpected wifi network
+	cp /tmp/overlay/rc.local /etc/rc.local
+	
+} # TimeoutInsecureServices
 
 Main "$@"
